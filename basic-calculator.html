@@ -27,7 +27,7 @@
 
     #display{
         width: 100%;
-        height: 200px;
+        height: 120px;
         background: #cecece;
         color: #fff;
         font-size: 65px;
@@ -40,6 +40,7 @@
     #keyboard{
         width: 100%;
         background: #c7c7c7;
+        border-bottom: 1px solid #000;
     }
 
     #keyboard tr{
@@ -54,15 +55,29 @@
     #keyboard td{
         border-right: 1px solid #000000;
         text-align: center;
-        font-size: 30px;
+        font-size: 35px;
         color: #000 ;
         border-top: 1px solid #000000;
         cursor: pointer;
+        font-weight: bold;
+    }
+    body{
+        background: #0d2940;
+    }
+    h1{
+        color: #ffc40f;
     }
 </style>
 <script>
-    $( document ).ready(function() {
+    $( document ).ready(function(event) {
         var tmp='';
+        var keycode = 0;
+        //Read the keyboard input
+        document.onkeypress = function (event) {
+            event = event || window.event;
+            keycode = event.keyCode;
+            console.log(keycode);
+        };
         //####################################
         $(".operator").click(function () {
             return calc($(this), 'operator');
